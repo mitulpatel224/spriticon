@@ -1,0 +1,75 @@
+<div>
+  <form class="d-flex flex-row" [formGroup]="form">
+    <!-- CONTROLS SECTION -->
+    <div class="col-md-4 p-3 control-panel">
+
+      <h5 class="mb-3">Additional Settings</h5>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="urlName">Background URL</label>
+          <input type="text" formControlName="urlName" autocomplete="url" class="form-control" id="urlName" placeholder="your_images/sprite.png">
+          <p class="form-text text-muted">
+            Set your image Url(relative path) here.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <label for="selector">Selector Type</label>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" id="selector" (click)="setSelector('class')" [ngClass]="{'btn btn-default':true, 'btn-primary' : getSelector()=='class'}">Class</button>
+            <button type="button" (click)="setSelector('id')" [ngClass]="{'btn btn-default':true, 'btn-primary' : getSelector()=='id'}">Id</button>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <label for="selectorName">Name</label>
+          <input type="text" min="1" formControlName="selectorName" class="form-control" id="selectorName" placeholder="Name for this icon">
+        </div>
+        <div class="col-md-12">
+          <p class="form-text text-muted">
+            Set your visible box height and width here.
+          </p>
+        </div>
+      </div>
+      <hr class="mb-4">
+
+      <h5 class="mb-3">Drag over the image and get your CSS</h5>
+      <div *ngIf="form.valid">
+        <tabset class="tabset" type="pills" [justified]="true">
+          <tab heading="CSS">
+            <pre class="p-2 mb-3">{{ output?.css }}</pre>
+            <button type="button" class="btn btn-primary btn-block" spriticonCopyToClipboard [text-copy]="output?.css">Copy</button>
+          </tab>
+          <tab heading="SASS">
+            <pre class="p-2 mb-3">{{ output?.sass }}</pre>
+            <button type="button" class="btn btn-primary btn-block" spriticonCopyToClipboard [text-copy]="output?.sass">Copy</button>
+          </tab>
+        </tabset>
+      </div>
+
+    </div>
+
+    <!-- PREVIEW SECTION -->
+    <div class="col-md-8 p-3">
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="fileSelect">Open your sprite image</label>
+          <div class="form-control form-control-lg form-control-file">
+            <input #file hidden type="file" (change)="readUrl($event)" class="" id="fileSelect">
+            <label class="btn btn-sm btn-primary" for="fileSelect">Select image</label>
+            <ng-container *ngIf="filename">
+              <span>{{ filename }}</span>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <hr class="mb-2">
+      <h5 class="mb-3">Use the
+        <span style="color:red">Red box</span> bellow and grab your icons...</h5>
+      <div #frameBounds class="m-t-5 work-area">
+
+        <div #frame ngResizable rzHandles="se" (rzResizing)="onFrameResize($event)" ngDraggable (movingOffset)="onFrameMoving($event)"
+          [handle]="dragHandle" [bounds]="frameBounds" [inBounds]="true" [preventDefaultEvent]="true" class="frame" [ngStyle]="[{'height': getFrameHeight(), 'width' : getFrameWidth()}]"></div>
+        <img [src]="form.get('url').value">
+      </div>
+    </div>
+  </form>
+</div>
