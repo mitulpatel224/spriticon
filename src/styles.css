@@ -14,7 +14,7 @@
     overflow-y: hidden;
 }
 .work-area {
-    background: url("assets/images/bg-transparent.png");
+    background: url("./assets/images/bg-transparent.png");
     border: 0px solid #ccc;
     position: relative;
     overflow-x: scroll;
@@ -32,3 +32,65 @@
 .tabset ul, .tabset div {
     background: #fff;
 }
+section {
+    padding: 8rem 0;
+}
+.bg-primary, .btn-primary {
+    background-color: #671528!important;
+    border-color: #671528!important;
+}
+.bg-dark {
+    background-color: #212529!important;
+}
+a {
+    color: #c39da6;
+}
+a:hover{
+    color: #671528;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: #671528!important;
+    border-color: #671528!important;
+}
+
+.icon-cp {
+    position: absolute;
+ height: 30px;
+ width: 28px;
+ background: url('assets/images/sprite-my-icons.png') no-repeat -2px -1px;
+   }
+   
+.icon-css {
+    position: absolute;
+    height: 29px;
+    width: 29px;
+    background: url('assets/images/sprite-my-icons.png') no-repeat -31px -1px;
+   }
+
+   .icon-home {
+    position: absolute;
+    height: 29px;
+ width: 29px;
+ background: url('assets/images/sprite-my-icons.png') no-repeat -61px -1px;
+   }
+   
+.icon-tool {
+    position: absolute;
+    height: 29px;
+ width: 29px;
+ background: url('assets/images/sprite-my-icons.png') no-repeat -1px -31px;
+   }
+   
+.icon-doc {
+    position: absolute;
+    height: 29px;
+ width: 29px;
+ background: url('assets/images/sprite-my-icons.png') no-repeat -31px -32px;
+   }
+   
+.icon-sass {
+    position: absolute;
+    height: 29px;
+ width: 38px;
+ background: url('assets/images/sprite-my-icons.png') no-repeat -61px -31px;
+   }

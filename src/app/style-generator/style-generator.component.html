@@ -12,14 +12,15 @@
             Set your image Url(relative path) here.
           </p>
         </div>
-        <div class="col-md-5">
+        <div class="col-lg-5 col-md-12">
           <label for="selector">Selector Type</label>
+          <div class="clear-fix"></div>
           <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" id="selector" (click)="setSelector('class')" [ngClass]="{'btn btn-default':true, 'btn-primary' : getSelector()=='class'}">Class</button>
             <button type="button" (click)="setSelector('id')" [ngClass]="{'btn btn-default':true, 'btn-primary' : getSelector()=='id'}">Id</button>
           </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-lg-7 col-md-12">
           <label for="selectorName">Name</label>
           <input type="text" min="1" formControlName="selectorName" class="form-control" id="selectorName" placeholder="Name for this icon">
         </div>
@@ -35,12 +36,14 @@
       <div *ngIf="form.valid">
         <tabset class="tabset" type="pills" [justified]="true">
           <tab heading="CSS">
-            <pre class="p-2 mb-3">{{ output?.css }}</pre>
-            <button type="button" class="btn btn-primary btn-block" spriticonCopyToClipboard [text-copy]="output?.css">Copy</button>
+            <pre class="p-2 mb-3 h-150">{{ output?.css }}</pre>
+            <button type="button" class="btn btn-primary btn-block" spriticonCopyToClipboard [text-copy]="output?.css"
+            tooltip="Copy" container="body">Copy <i class="icon-cp"></i></button>
           </tab>
           <tab heading="SASS">
-            <pre class="p-2 mb-3">{{ output?.sass }}</pre>
-            <button type="button" class="btn btn-primary btn-block" spriticonCopyToClipboard [text-copy]="output?.sass">Copy</button>
+            <pre class="p-2 mb-3 h-150">{{ output?.sass }}</pre>
+            <button type="button" class="btn btn-primary btn-block" spriticonCopyToClipboard [text-copy]="output?.sass"
+            tooltip="Copy" container="body">Copy <i class="icon-cp"></i></button>
           </tab>
         </tabset>
       </div>
